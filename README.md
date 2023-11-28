@@ -1,3 +1,10 @@
+![mainProducts](https://github.com/Junaid-Ahmad-69/Platzi-Store-App/assets/85307602/bb9f7d11-b0ed-4201-8d97-7e2d52363bac)
+![banner](https://github.com/Junaid-Ahmad-69/Platzi-Store-App/assets/85307602/d9cecd1e-7cb4-4f11-8687-b6ff1a07ce19)
+![mainProducts](https://github.com/Junaid-Ahmad-69/Platzi-Store-App/assets/85307602/0f27f367-0f9e-494d-b9c6-38f693ba2751)
+![overview](https://github.com/Junaid-Ahmad-69/Platzi-Store-App/assets/85307602/e0e073e9-a896-416f-a7bb-3ed801acae01)
+![cardItems](https://github.com/Junaid-Ahmad-69/Platzi-Store-App/assets/85307602/16260eb4-200b-48cd-a053-86e909fa5162)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
