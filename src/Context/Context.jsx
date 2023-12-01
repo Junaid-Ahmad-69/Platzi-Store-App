@@ -13,7 +13,12 @@ const initialState = {
     filterCategory: "",
     isOpen: false,
     item: [],
-    productQuantity: 1
+    productQuantity: 1,
+    offset: 0,
+    limit: 10,
+    // Get the all data of api
+    productAllData: [],
+    activeButton: 0,
 }
 
 
@@ -24,7 +29,8 @@ function reducer(state, action) {
 
         case "fetching":
             return {
-                ...state, isLoading: false, storeData: action.payload,
+                ...state, isLoading: false, storeData: action.payload.paginateData,
+                productAllData: action.payload.length,
             }
         case "productDetail":
             return {
@@ -71,6 +77,11 @@ function reducer(state, action) {
                 } : item)
             }
 
+        case "offsetPaginate": {
+            return {
+                ...state, offset: action.payload * state.limit, activeButton: action.payload
+            }
+        }
         case 'removeProduct':
             return {
                 ...state, item: state.item.filter((cartItems) => cartItems.id !== action.payload)
@@ -94,24 +105,33 @@ const ContextProvider = ({children}) => {
         filterCategory,
         isOpen,
         item,
-        productQuantity
+        productQuantity,
+        limit,
+        offset,
+        productAllData,
+        activeButton
     }, dispatch] = useReducer(reducer, initialState);
+
 
     /* Calculate Cart Total Amount */
     const totalAmount = item.reduce((acc, total) => {
         return acc + total.total
-    }, 0)
+    }, 0);
 
     const productId = useLocation();
     const id = productId.pathname.split("/")[2];
-    const fetchingData = async () => {
+
+    // let categoryParam = '';
+    // if (filterCategory) {
+    //     categoryParam = `/${filterCategory}`;
+    // }
+    const fetchingData = async (offset, limit) => {
         dispatch({type: "loading"})
+        const URL = `${BASE_URL}/api/v1/products?offset=${offset}&limit=${limit}`;
         try {
-            const response = await axios.get(`${BASE_URL}/api/v1/products/${filterCategory}`)
-            if (response.status !== 200) {
-                throw new Error("Failed to fetch the data...");
-            }
-            dispatch({type: "fetching", payload: response.data})
+            const response = await axios.get(URL)
+            const paginateData = response.data
+            dispatch({type: "fetching", payload: {paginateData, length: 70}})
         } catch (e) {
             dispatch({type: "rejected", payload: 'There was an error while fetching the data'})
         }
@@ -131,8 +151,9 @@ const ContextProvider = ({children}) => {
 
 // FETCHING THE STORE DATA
     useEffect(() => {
-        fetchingData()
-    }, [filterCategory])
+        fetchingData(offset, limit)
+
+    }, [filterCategory, limit, offset])
 
     // FETCHING SINGLE PRODUCT DATA
     useEffect(() => {
@@ -150,7 +171,11 @@ const ContextProvider = ({children}) => {
                 isOpen,
                 item,
                 productQuantity,
-                totalAmount
+                totalAmount,
+                limit,
+                offset,
+                productAllData,
+                activeButton
             }}>
             {children}
         </StoreContext.Provider>

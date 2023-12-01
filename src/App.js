@@ -5,14 +5,18 @@ import Main from "./Feature/Main/Main";
 import {ContextProvider} from "./Context/Context";
 import Footer from "./Feature/Footer/Footer";
 import Product from "./Feature/Main/Product/Product";
+import {PaymentSuccess} from "./Payment/PaymentActions/PaymentSuccess";
+import {PaymentCancel} from "./Payment/PaymentActions/PaymentCancel";
 
 const App = () => {
     return (
         <ContextProvider>
             <Navbar/>
             <Routes>
-                <Route path="/" element={<Main/>}/>
+                <Route index element={<Main/>}/>
                 <Route path="/products/:id" element={<Product/>}/>
+                <Route path="/paymentsuccess" element={<PaymentSuccess/>}/>
+                <Route path="/paymentcancel" element={<PaymentCancel/>}/>
             </Routes>
             <Footer/>
 

@@ -2,7 +2,7 @@ import {useStore} from "../../../Context/Context";
 import Spinner from "../../Spinner/Spinner";
 import CardProduct from "./CardProduct/CardProduct";
 const Card = () => {
-    const {isLoading, storeData, dispatch, filterCategory} = useStore();
+    const {isLoading, storeData, dispatch, filterCategory } = useStore();
 
     return (
         <>
@@ -37,7 +37,7 @@ const Card = () => {
                                     </button>
                                 </div>
                                 <button onClick={() => dispatch({ type: 'productCategory', payload: ""})} disabled={filterCategory === ""}
-                                    className="border transition-all duration-500 rounded hover:text-[#4546e5] hover:border-[#4546e5] py-2 px-4">Reset
+                                    className="disabled:cursor-not-allowed disabled:hover:text-black  transition-all duration-500 rounded hover:text-[#4546e5] hover:border-[#4546e5] py-2 px-4">Reset
                                     Filter
                                 </button>
                             </div>

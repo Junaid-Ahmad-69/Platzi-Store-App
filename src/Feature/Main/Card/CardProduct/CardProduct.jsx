@@ -17,7 +17,7 @@ const CardProduct = ({product}) => {
         <div className="group" id={product.id}>
             <div
                 className="relative overflow-hidden shadow shadow-gray-600 rounded-md duration-500 h-[360px]">
-                <img src={product.images[0]} alt={product.title}/>
+                <img src={product.images[0]} alt={product.title} className="h-full w-full"/>
 
                 <div
                     className="absolute -bottom-20 group-hover:bottom-3 start-3 end-3 duration-500">

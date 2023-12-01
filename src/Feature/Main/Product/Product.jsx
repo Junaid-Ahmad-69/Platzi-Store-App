@@ -42,7 +42,7 @@ const Product = () => {
                                                     id="tns1">
                                                     <div className="tiny-slide tns-item tns-slide-active"
                                                          id="tns1-item0">
-                                                        <img src={firstImage} className="rounded-md"
+                                                        <img src={firstImage} className="rounded-md "
                                                              alt={productData.title}/>
                                                     </div>
                                                 </div>
