@@ -156,9 +156,9 @@ const ContextProvider = ({children}) => {
     }, [filterCategory, limit, offset])
 
     // FETCHING SINGLE PRODUCT DATA
-    useEffect(() => {
-        singleProduct()
-    }, [id])
+    // useEffect(() => {
+    //     singleProduct()
+    // }, [id])
 
     return (
         <StoreContext.Provider
