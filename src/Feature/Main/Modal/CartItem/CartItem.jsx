@@ -1,6 +1,5 @@
 import "./CartItems.css"
 import {useStore} from "../../../../Context/Context";
-import StripeButton from "../../../../Payment/StripeButton";
 
 const CartItem = () => {
     const {item, dispatch, totalAmount} = useStore()
@@ -37,7 +36,6 @@ const CartItem = () => {
                 <h6>Total Amount</h6>
                 <strong className="text-green-600">$ {(totalAmount).toFixed(2)}</strong>
             </div>
-            <StripeButton/>
 
         </>
     )
