@@ -136,18 +136,18 @@ const ContextProvider = ({children}) => {
             dispatch({type: "rejected", payload: 'There was an error while fetching the data'})
         }
     }
-    const singleProduct = async () => {
-        dispatch({type: "loading"})
-        try {
-            const response = await axios.get(`${BASE_URL}/api/v1/products/${id}`)
-            if (response.status !== 200) {
-                throw new Error("Failed to fetch the data...");
-            }
-            dispatch({type: "productDetail", payload: response.data})
-        } catch (e) {
-            dispatch({type: "rejected", payload: 'There was an error while fetching the data'})
-        }
-    }
+    // const singleProduct = async () => {
+    //     dispatch({type: "loading"})
+    //     try {
+    //         const response = await axios.get(`${BASE_URL}/api/v1/products/${id}`)
+    //         if (response.status !== 200) {
+    //             throw new Error("Failed to fetch the data...");
+    //         }
+    //         dispatch({type: "productDetail", payload: response.data})
+    //     } catch (e) {
+    //         dispatch({type: "rejected", payload: 'There was an error while fetching the data'})
+    //     }
+    // }
 
 // FETCHING THE STORE DATA
     useEffect(() => {
