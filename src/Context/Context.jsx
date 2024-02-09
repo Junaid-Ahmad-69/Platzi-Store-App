@@ -1,6 +1,6 @@
 import {createContext, useContext, useEffect, useReducer} from "react";
 import axios from "axios";
-import {useLocation} from "react-router-dom";
+// import {useLocation} from "react-router-dom";
 
 const StoreContext = createContext();
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -118,8 +118,8 @@ const ContextProvider = ({children}) => {
         return acc + total.total
     }, 0);
 
-    const productId = useLocation();
-    const id = productId.pathname.split("/")[2];
+    // const productId = useLocation();
+    // const id = productId.pathname.split("/")[2];
 
     // let categoryParam = '';
     // if (filterCategory) {
